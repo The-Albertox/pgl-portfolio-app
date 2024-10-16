@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { Button, Pressable, View, Text, StyleSheet } from "react-native";
+import { Pressable, View, Text, StyleSheet, Button } from "react-native";
 
-const Header = () => {
-  const [displayMyQR, setDisplayMyQR] = useState(true);
+const Header = ({ setDisplayMyQR }: any) => {
   return (
     <View>
       <Text style={styles.title}>My Portfolio App</Text>
@@ -10,12 +9,10 @@ const Header = () => {
         <Pressable style={styles.button} onPress={() => setDisplayMyQR(true)}>
           <Text style={styles.buttonText}>Mi info</Text>
         </Pressable>
-        <Button
-          onPress={() => setDisplayMyQR(false)}
-          title="Mi Repo"
-          color="light-gray"
-          accessibilityLabel="Un botón pal QR"
-        />
+
+        <Pressable style={styles.button} onPress={() => setDisplayMyQR(false)}>
+          <Text style={styles.buttonText}>Mi QR</Text>
+        </Pressable>
       </View>
     </View>
   );
@@ -40,6 +37,9 @@ const styles = StyleSheet.create({
   },
   button: {
     width: "50%",
+    borderColor: "black",
+    borderWidth: 1,
+    borderStyle: "dashed",
     alignItems: "center",
   },
   buttonText: {
